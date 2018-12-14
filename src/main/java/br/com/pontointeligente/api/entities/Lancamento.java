@@ -1,10 +1,24 @@
 package br.com.pontointeligente.api.entities;
 
-import br.com.pontointeligente.api.enums.TipoEnum;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.pontointeligente.api.enums.TipoEnum;
 
 @Entity
 @Table(name = "lancamento")
@@ -21,10 +35,11 @@ public class Lancamento implements Serializable {
     private TipoEnum tipo;
     private Funcionario funcionario;
 
-    public Lancamento(){}
+    public Lancamento() {
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -43,7 +58,7 @@ public class Lancamento implements Serializable {
         this.data = data;
     }
 
-    @Column(name = "descricao", nullable = false)
+    @Column(name = "descricao", nullable = true)
     public String getDescricao() {
         return descricao;
     }
@@ -52,7 +67,7 @@ public class Lancamento implements Serializable {
         this.descricao = descricao;
     }
 
-    @Column(name = "localizacao", nullable = false)
+    @Column(name = "localizacao", nullable = true)
     public String getLocalizacao() {
         return localizacao;
     }
@@ -99,12 +114,12 @@ public class Lancamento implements Serializable {
     }
 
     @PreUpdate
-    public void preUpdate(){
+    public void preUpdate() {
         dataAtualizacao = new Date();
     }
 
     @PrePersist
-    public void prePersist(){
+    public void prePersist() {
         final Date atual = new Date();
         dataCriacao = atual;
         dataAtualizacao = atual;
@@ -112,6 +127,9 @@ public class Lancamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Empresa [id=" + id + ", descricao=" + descricao + "]";
+        return "Lancamento [id=" + id + ", data=" + data + ", descricao=" + descricao + ", localizacao=" + localizacao
+                + ", dataCriacao=" + dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", tipo=" + tipo
+                + ", funcionario=" + funcionario + "]";
     }
+
 }

@@ -42,9 +42,9 @@ public class LancamentoRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        Empresa empresa = this.empresaRepository.save(obterDadosEmpresa());
+        final Empresa empresa = this.empresaRepository.save(obterDadosEmpresa());
 
-        Funcionario funcionario = this.funcionarioRepository.save(obterDadosFuncionario(empresa));
+        final Funcionario funcionario = this.funcionarioRepository.save(obterDadosFuncionario(empresa));
         this.funcionarioId = funcionario.getId();
 
         this.lancamentoRepository.save(obterDadosLancamentos(funcionario));
@@ -58,7 +58,7 @@ public class LancamentoRepositoryTest {
 
     @Test
     public void testBuscarLancamentosPorFuncionarioId() {
-        List<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId);
+        final List<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId);
 
         assertEquals(2, lancamentos.size());
     }
@@ -66,7 +66,7 @@ public class LancamentoRepositoryTest {
 
 
     private Lancamento obterDadosLancamentos(Funcionario funcionario) {
-        Lancamento lancameto = new Lancamento();
+        final Lancamento lancameto = new Lancamento();
         lancameto.setData(new Date());
         lancameto.setTipo(TipoEnum.INICIO_ALMOCO);
         lancameto.setFuncionario(funcionario);
@@ -74,7 +74,7 @@ public class LancamentoRepositoryTest {
     }
 
     private Funcionario obterDadosFuncionario(Empresa empresa) throws NoSuchAlgorithmException {
-        Funcionario funcionario = new Funcionario();
+        final Funcionario funcionario = new Funcionario();
         funcionario.setNome("Fulano de Tal");
         funcionario.setPerfil(PerfilEnum.ROLE_USUARIO);
         funcionario.setSenha(PasswordUtils.gerarBCrypt("123456"));
@@ -85,7 +85,7 @@ public class LancamentoRepositoryTest {
     }
 
     private Empresa obterDadosEmpresa() {
-        Empresa empresa = new Empresa();
+        final Empresa empresa = new Empresa();
         empresa.setRazaoSocial("Empresa de exemplo");
         empresa.setCnpj("51463645000100");
         return empresa;

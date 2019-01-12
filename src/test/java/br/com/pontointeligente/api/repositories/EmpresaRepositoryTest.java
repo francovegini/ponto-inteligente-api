@@ -25,7 +25,7 @@ public class EmpresaRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        Empresa empresa = new Empresa();
+        final Empresa empresa = new Empresa();
         empresa.setRazaoSocial("Empresa de exemplo");
         empresa.setCnpj(CNPJ);
         this.empresaRepository.save(empresa);
@@ -38,7 +38,7 @@ public class EmpresaRepositoryTest {
 
     @Test
     public void testBuscarPorCnpj() {
-        Empresa empresa = this.empresaRepository.findByCnpj(CNPJ);
+        final Empresa empresa = this.empresaRepository.findByCnpj(CNPJ);
 
         assertEquals(CNPJ, empresa.getCnpj());
     }

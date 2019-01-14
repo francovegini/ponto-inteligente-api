@@ -41,7 +41,7 @@ public class EmpresaServiceTest {
 
     @Test
     public void testBuscarEmpresaPorCnpj() {
-        final Optional<Empresa> empresa = this.empresaService.buscaPorCnpj(CNPJ);
+        final Optional<Empresa> empresa = this.empresaService.buscarPorCnpj(CNPJ);
 
         assertTrue(empresa.isPresent());
     }

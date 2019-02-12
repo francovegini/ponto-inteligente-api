@@ -48,7 +48,7 @@ public class CadastroPFController {
      *
      * @param cadastroPFDto
      * @param result
-     * @return ResponseEntity<Response<CadastroPFDto>>
+     * @return ResponseEntity<Response < CadastroPFDto>>
      * @throws NoSuchAlgorithmException
      */
     @PostMapping

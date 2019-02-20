@@ -63,6 +63,13 @@
             <version>3.6</version>
         </dependency>
 
+        <!-- JWT Token -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+
         <!-- JPA, MySQL e H2 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
